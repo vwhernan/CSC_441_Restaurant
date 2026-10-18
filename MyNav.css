@@ -1,0 +1,74 @@
+/* Navbar Container */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #E9E3D5; 
+  padding: 1.2rem 3rem;
+  border-bottom: 2px solid #24231F ;
+  font-family: sans-serif;
+}
+
+/* Logo styling */
+.logo {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #D63724 ; 
+  text-decoration: none;
+  letter-spacing: 1px;
+}
+
+.logo span {
+  font-weight: normal;
+  margin-left: 4px;
+}
+
+/* Nav Links Group */
+.navbar-links {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+}
+
+.nav-link{
+    text-decoration: none;
+    color: #24231F ;
+    font-weight: bold;
+    transition: color 0.2s ease;
+}
+
+.nav-link:hover {
+    color: #D63724 ;
+    text-decoration: underline;
+}
+
+/* "Book a table" Button Styling */
+.matsuri-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #D63724; 
+  color: #F4F0E5 ;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: background-color 0.2s ease;
+}
+
+.matsuri-btn:hover {
+  background-color: #D63724;
+  text-decoration: underline;
+}
+
+/* Injecting the arrow SVG*/
+.matsuri-btn::after {
+  content: "";
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='7' y1='17' x2='17' y2='7'%3E%3C/line%3E%3Cpolyline points='7 7 17 7 17 17'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+}

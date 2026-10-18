@@ -1,0 +1,14 @@
+body{
+    background-color: #E9E3D5 !important;
+}
+ 
+
+.hero h1 {
+    font-family: 'Impact', 'Bebas Neue', 'Oswald', sans-serif;
+    font-weight: 500;
+    font-size: 4rem;
+    line-height: 0.95;
+    letter-spacing: 0.03em;
+    color: #D63724; 
+    padding: 0;
+}
