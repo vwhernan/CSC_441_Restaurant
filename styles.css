@@ -1,0 +1,24 @@
+@font-face {
+  font-family: 'MyCustomFont';
+  src: url('fonts/BarlowCondensed-Black.ttf') format('truetype');
+}
+
+body {
+  font-family: 'MyCustomFont', sans-serif; /* sans-serif is a safe fallback */
+  background-color: #F4F0E5;
+}
+
+/* Header Menu links */
+.navbar a, .navbar a:visited {
+  color: #24231F;
+}
+
+.navbar a:hover{
+  font-weight: bold;
+}
+
+.navbar a:active, 
+.navbar a.active:visited,
+.navbar a.current-page {
+  color: #D63724;
+}
