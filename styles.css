@@ -1,24 +1,14 @@
-@font-face {
-  font-family: 'MyCustomFont';
-  src: url('fonts/BarlowCondensed-Black.ttf') format('truetype');
+body{
+    background-color: #E9E3D5 !important;
 }
+ 
 
-body {
-  font-family: 'MyCustomFont', sans-serif; /* sans-serif is a safe fallback */
-  background-color: #F4F0E5;
-}
-
-/* Header Menu links */
-.navbar a, .navbar a:visited {
-  color: #24231F;
-}
-
-.navbar a:hover{
-  font-weight: bold;
-}
-
-.navbar a:active, 
-.navbar a.active:visited,
-.navbar a.current-page {
-  color: #D63724;
+.hero h1 {
+    font-family: 'Impact', 'Bebas Neue', 'Oswald', sans-serif;
+    font-weight: 500;
+    font-size: 4rem;
+    line-height: 0.95;
+    letter-spacing: 0.03em;
+    color: #D63724; 
+    padding: 0;
 }
