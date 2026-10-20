@@ -4,7 +4,8 @@ const components = [
     { file: 'About.html', id: 'about-placeholder' },
     { file: 'Menu.html', id: 'menu-placeholder' },
     { file: 'Locations.html', id: 'locations-placeholder' },
-    { file: 'Reserve.html', id: 'reserve-placeholder' }
+    { file: 'Reserve.html', id: 'reserve-placeholder' },
+    { file: 'Footer.html', id: 'footer-placeholder' }
 ];
 
 
