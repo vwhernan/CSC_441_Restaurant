@@ -1,6 +1,7 @@
 /* Navbar Container */
 .navbar {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
   justify-content: space-between;
   background-color: #E9E3D5; 
@@ -28,7 +29,9 @@
 
 /* Nav Links Group */
 .navbar-links {
+  grid-column: 2;
   display: flex;
+  justify-content: center;
   align-items: center;
   gap: 2.5rem;
 }
