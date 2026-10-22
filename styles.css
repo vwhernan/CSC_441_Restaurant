@@ -1,7 +1,14 @@
 body{
     background-color: #E9E3D5 !important;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+
 }
- 
+
+ .hero{
+    width: 80%;
+}
 
 .hero h1 {
     font-family: 'Impact', 'Bebas Neue', 'Oswald', sans-serif;
@@ -11,4 +18,8 @@ body{
     letter-spacing: 0.03em;
     color: #D63724; 
     padding: 0;
+}
+
+.container, .container-lg, .container-md, .container-sm {
+    max-width: 80% !important;
 }
