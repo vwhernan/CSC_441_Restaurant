@@ -1,7 +1,7 @@
 .site-footer {
     background-color: #24231F;
     color: #F4F0E5;
-    font-family: sans-serif;
+    font-family: 'inter',sans-serif;
     padding: 2.5rem 3rem 1rem;
 
     ul {
@@ -41,7 +41,8 @@
 
     h2 {
         margin: 0;
-        font-family: 'Impact', 'Bebas Neue', 'Oswald', sans-serif;
+        font-family: 'Barlow Condensed', 'Bebas Neue', 'Oswald', sans-serif;
+        font-weight: 900;
         font-size: 7rem;
         line-height: 0.9;
         letter-spacing: 1px;
