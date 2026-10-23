@@ -7,7 +7,7 @@
 
 .about-header {
     color: #24231F;
-    font-family: 'Impact', 'Bebas Neue', 'Oswald', sans-serif;
+    font-family: 'Barlow Condensed', 'Bebas Neue', 'Oswald', sans-serif;
     text-align: left;
     font-size: 5rem;
     padding: 0;
@@ -42,7 +42,7 @@
 }
 
 .story-heading {
-    font-family: 'Oswald', 'Bebas Neue', 'Impact', sans-serif;
+    font-family: 'Barlow Condensed', 'Bebas Neue', 'Impact', sans-serif;
     font-size: 4.2rem;
     font-weight: 200;
     line-height: 0.95;        
@@ -90,7 +90,7 @@
 
 
 .story-right .founders-tag {
-    font-family: 'Oswald', 'Bebas Neue', sans-serif;
+    font-family: 'Barlow Condensed', 'Bebas Neue', sans-serif;
     font-size: 1.35rem;
     font-weight: 600;
     letter-spacing: 0.03em;
