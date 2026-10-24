@@ -20,7 +20,45 @@
     <div id="locations-placeholder"></div>
     <div id="menu-placeholder"></div>
     <div id="about-placeholder"></div>
+            
+    <section id="customer-reviews">
+        <h2>Customer Reviews</h2>
+        
+        <div id="reviews-container"></div>
+
+        <h3>Leave a Review</h3>
+
+        <form id="review-form">
+            <div class="mb-3">
+                <label for="customer-name" class="form-label">Your Name</label>
+                <input type="text" id="customer-name" class="form-control" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="review-rating" class="form-label">Rating</label>
+                <select id="review-rating" class="form-select" required>
+                    <option value="">Select a rating</option>
+                    <option value="5">5 - Excellent</option>
+                    <option value="4">4 - Good</option>
+                    <option value="3">3 - Average</option>
+                    <option value="2">2 - Poor</option>
+                    <option value="1">1 - Very Poor</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label for="review-comment" class="form-label">Your Review</label>
+                <textarea id="review-comment" class="form-control" rows="3" required></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit Review</button>
+        </form>
+
+        <p id="review-message" role="status" aria-live="polite"></p>
+    </section>
+
     <script src="site.js"></script>
+    <script src="reviews.js"></script>
     <div id="footer-placeholder"></div>
     </div>
 </body>
