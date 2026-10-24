@@ -1,0 +1,9 @@
+# Ignore installed Node.js dependencies
+node_modules/
+
+# Ignore database credentials and environment files
+.env
+.env.*
+
+# Allow example environment files
+!.env.example
