@@ -4,6 +4,7 @@ const components = [
     { file: 'About.html', id: 'about-placeholder' },
     { file: 'Menu.html', id: 'menu-placeholder' },
     { file: 'Locations.html', id: 'locations-placeholder' },
+    { file: 'LocationsDetails.html', id: 'locations-map-details' },
     { file: 'Footer.html', id: 'footer-placeholder' }
 ];
 
@@ -20,6 +21,11 @@ components.forEach(component => {
             const element = document.getElementById(component.id);
             if (element) {
                 element.innerHTML = data;
+            }
+            if (component.id === 'nav-placeholder') {
+                const page = document.body.dataset.page;
+                const link = document.getElementById("nav-" + page);
+                if (link) link.classList.add("active");
             }
         })
         .catch(error => console.error('Error:', error));

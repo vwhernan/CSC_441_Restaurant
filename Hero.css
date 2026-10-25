@@ -16,9 +16,6 @@
     padding: 0;
 }
 
-.container, .container-lg, .container-md, .container-sm {
-    max-width: 80% !important;
-}
 
 .hero figure {
     align-self: flex-end;
