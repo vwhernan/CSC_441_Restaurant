@@ -173,3 +173,27 @@ body{
         color: #6B675E;
     }
 }
+
+.location-details {
+    padding: 2rem;
+}
+
+/* -------------------------
+   Menu Page Styling
+---------------------------- */
+#menu-page-header {
+    background-color: #E9E3D5;
+    height: auto;
+    margin-bottom: 2rem;
+
+    img {
+        max-width: 100%;
+    }
+
+    p {
+        padding: 0.5rem;
+        font-size: 0.75rem;
+        opacity: 0.8;
+    }
+}
+
