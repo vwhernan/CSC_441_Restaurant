@@ -1,9 +1,175 @@
 body{
-    background-color: #E9E3D5 !important;
+    background-color: #F4F0E5 !important;
     overflow-x: hidden;
     margin: 0;
     padding: 0;
 
 }
 
- 
+.container, .container-lg, .container-md, .container-sm {
+    max-width: 80% !important;
+}
+
+/* -------------------------
+    Page Title Styling
+---------------------------- */
+.page-title {
+    font-family: 'inter', sans-serif;
+    font-size: 16px;
+        
+
+    h1 {
+        font-family: 'Barlow Condensed', 'Bebas Neue', 'Oswald', sans-serif;
+        font-weight: 900;
+        text-transform: uppercase;
+        margin: 0;
+        font-size: 64px;
+    }
+
+    h6 {
+        font-family: 'inter', sans-serif;
+        font-weight: 400;
+        margin-top: 2rem;
+        margin-bottom: 0.5rem;
+        text-transform: uppercase;
+        font-size: 10px;
+        color:#D63724
+    }
+
+    p {
+        font-family: 'inter', sans-serif;
+        font-weight: 400;
+        margin-top: 0.5rem;
+        margin-bottom: 1rem;
+        font-size: 14px;
+    }
+}
+
+
+/* -------------------------
+   Footer styling
+---------------------------- */
+ .site-footer {
+    background-color: #24231F;
+    color: #F4F0E5;
+    font-family: 'inter',sans-serif;
+    padding: 2.5rem 3rem 1rem;
+
+    ul {
+        list-style: none;
+        padding: 0;
+        margin: 0 0 2.5rem;
+        font-size: 0.85rem;
+    }
+
+    li {
+        margin-bottom: 0.6rem;
+    }
+
+    /* "COME ON IN" label */
+    li:first-child {
+        font-size: 0.65rem;
+        text-transform: uppercase;
+        opacity: 0.8;
+    }
+
+    a {
+        color: inherit;
+        text-decoration: none;
+    }
+
+    a:hover {
+        color: #D63724;
+        text-decoration: underline;
+    }
+}
+
+.footer-branding {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+
+    h2 {
+        margin: 0;
+        font-family: 'Barlow Condensed', 'Bebas Neue', 'Oswald', sans-serif;
+        font-weight: 900;
+        font-size: 7rem;
+        line-height: 0.9;
+        letter-spacing: 1px;
+    }
+
+    p {
+        margin: 0 0 0.5rem;
+        font-size: 0.75rem;
+        line-height: 1.5;
+    }
+}
+
+.site-footer > p {
+    margin: 1.5rem 0 0;
+    font-size: 0.7rem;
+    opacity: 0.6;
+}
+
+/* -------------------------
+   Locations Page Styling
+---------------------------- */
+.locations-map-details {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    iframe {
+        max-width: 50%;
+        height: 450px;
+        border: 0;
+    }
+}
+
+#san-francisco, #santa-barbara, #los-angeles {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#locations-information {
+    background-color: #E9E3D5;
+    padding: 3rem 4rem;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 3rem;
+
+    h4 {
+        flex: 1;
+        margin: 0;
+        font-family: 'Barlow Condensed', 'Bebas Neue', 'Oswald', sans-serif;
+        font-size: 3.5rem;
+        font-weight: 700;
+        line-height: 1;
+        text-transform: uppercase;
+        color: #24231F;
+    }
+}
+
+.location-information-segments {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    font-family: 'Inter', sans-serif;
+
+    h5 {
+        margin: 0 0 0.75rem;
+        font-size: 1rem;
+        font-weight: 400;
+        text-transform: capitalize;
+        color: #24231F;
+    }
+
+    p {
+        margin: 0;
+        font-size: 0.8rem;
+        line-height: 1.7;
+        color: #6B675E;
+    }
+}
