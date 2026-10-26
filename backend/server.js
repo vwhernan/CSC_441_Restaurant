@@ -7,6 +7,9 @@ require('dotenv').config();
 const express = require('express');
 const { MongoClient } = require("mongodb");
 
+// Import the MySQL connection pool ***
+const pool = require('./mysql');
+
 const app = express();
 
 // Allow the server to access the website's HTML, CSS, and JS files
@@ -51,6 +54,64 @@ async function startServer() {
         process.exit(1);
     }
 }
+
+ // Retrieve the restaurant menu from MySQL ***
+app.get('/api/menu', async (req, res) => {
+    try {
+        // Get the dishes, prices, categories, and ingredients
+        const [rows] = await pool.query(`
+            SELECT
+                d.dish_id,
+                d.dish_name,
+                d.description,
+                d.price,
+                c.category_name,
+                i.ingredient_name
+            FROM dishes AS d
+            LEFT JOIN categories AS c
+                ON d.category_id = c.category_id
+            LEFT JOIN dish_ingredients AS di
+                ON d.dish_id = di.dish_id
+            LEFT JOIN ingredients AS i
+                ON di.ingredient_id = i.ingredient_id
+            ORDER BY d.dish_id, i.ingredient_name
+        `);
+
+        // Group the ingredients under each dish
+        const menu = [];
+
+        for (const row of rows) {
+            let dish = menu.find(item => item.dish_id === row.dish_id);
+
+            // Add the dish if it is not already in the menu
+            if (!dish) {
+                dish = {
+                    dish_id: row.dish_id,
+                    dish_name: row.dish_name,
+                    description: row.description,
+                    price: row.price,
+                    category: row.category_name,
+                    ingredients: []
+                };
+
+                menu.push(dish);
+            }
+
+            // Add each ingredient to the matching dish
+            if (row.ingredient_name !== null) {
+                dish.ingredients.push(row.ingredient_name);
+            }
+        }
+
+        // Send the completed menu to the website
+        res.json(menu);
+
+    } catch (error) {
+        // Return an error if the menu cannot be retrieved
+        console.error("Error retrieving menu:", error);
+        res.status(500).json({ error: "Unable to retrieve menu" });
+    }
+});
 
 startServer();
 
