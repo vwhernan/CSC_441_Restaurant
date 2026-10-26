@@ -1,0 +1,75 @@
+# integration test 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MARSURI Dtabase Integration Test</title>
+</head>
+<body>
+    <h1>MATSURI Database Integration Test</h1>
+
+    <h2>MYSQL Menu Test</h2>
+    <p id="menu-result">Waiting for test...</p>
+
+    <h2>MongoDB Reviews Test</h2>
+    <p id="reviews-result">Waiting for test</p>
+
+    <script>
+        // test the MySQL menu endpoint
+        async function testMenu() {
+            const result = document.getElementById("menu-result");
+
+            try {
+                const response = await fetch("/api/menu");
+
+                if (!response.ok) {
+                    throw new Error("HTTP " + response.status);
+                }
+
+                const dishes = await response.json();
+
+                if (!Array.isArray(dishes) || dishes.length !== 45) {
+                    throw new Error("Expected 45 dishes");
+                }
+
+                result.textContent =
+                    "PASS: Retrieved " + dishes.length + " dishes from MySQL.";
+
+            } catch (error) {
+                result.textContent = "FAIL: " + error.message;
+            }
+        }
+
+        // test the MongoDB reviews endpoint
+        async function testReviews() {
+            const result = document.getElementById("reviews-result");
+
+            try {
+                const response = await fetch("/api/reviews");
+
+                if (!response.ok) {
+                    throw new Error("HTTP " + response.status);
+                }
+
+                const reviews = await response.json();
+
+                if (!Array.isArray(reviews)) {
+                    throw new Error("Expected an array of reviews");
+                }
+
+                result.textContent =
+                    "PASS: Retrieved " + reviews.length + " reviews from MongoDB.";
+
+            } catch (error) {
+                result.textContent = "FAIL: " + error.message;
+            }
+        }
+        
+        // run test
+        testMenu();
+        testReviews();
+    </script>
+</body>
+</html>
