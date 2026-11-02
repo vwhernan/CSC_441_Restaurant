@@ -5,12 +5,17 @@ so customer  reviews stored in the database can appear on the webpage. */
 require('dotenv').config();
 
 const express = require('express');
+const cors = require('cors');
 const { MongoClient } = require("mongodb");
 
 // Import the MySQL connection pool ***
 const pool = require('./mysql');
 
 const app = express();
+
+//To get data from API
+app.use(cors()); 
+app.use(express.json()); 
 
 // Allow the server to access the website's HTML, CSS, and JS files
 const path = require("path");
