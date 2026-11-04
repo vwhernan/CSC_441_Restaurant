@@ -65,6 +65,7 @@ app.get('/api/menu', async (req, res) => {
                 d.dish_name,
                 d.description,
                 d.price,
+                d.dietary_tags,
                 c.category_name,
                 i.ingredient_name
             FROM dishes AS d
@@ -90,6 +91,7 @@ app.get('/api/menu', async (req, res) => {
                     dish_name: row.dish_name,
                     description: row.description,
                     price: row.price,
+                    dietary_tags: row.dietary_tags,
                     category: row.category_name,
                     ingredients: []
                 };
@@ -133,7 +135,7 @@ app.post('/api/reviews', async (req, res) => {
             });
         }
 
-        // Select the database and reviews collection
+        // Select the database and reviews collection`
         const database = client.db("restaurant");
         const reviews = database.collection("reviews");
 
