@@ -31,12 +31,14 @@ async function fetchMenu() {
 // display the menu items on the page
 function displayMenu(items) {
 
-    // get the menu categories
+    // get unique menu categories from the items array
     const categories = [...new Set(items.map(dish => dish.category))];
+    // define the drink categories separately
     const drinkCategories = [
         'HIGHBALLS & COCKTAILS',
         'BEERS, SAKE & NO-ALC'
     ];
+    // order the categories so that drink categories appear last
     const orderedCategories = [
         ...categories.filter(category => !drinkCategories.includes(category)),
         ...drinkCategories.filter(category => categories.includes(category))
@@ -51,7 +53,7 @@ function displayMenu(items) {
 
     menuContainer.innerHTML = ''; 
 
-    // create a section for each category
+    // create a section for each ordered category and display its dishes
     orderedCategories.forEach(category => {
         const categorySection = document.createElement('section');
 
@@ -65,7 +67,7 @@ function displayMenu(items) {
 
         const categoryDishes = items.filter(dish => dish.category === category);
 
-        // display each dish
+        // display each dish within the current category
         categoryDishes.forEach(dish => {
             const dishElement = document.createElement('article');
 
@@ -119,6 +121,7 @@ function displayMenu(items) {
 
 }
 
+// Display the menu items in the console for debugging purposes
 function displayMenuConsole(items) {
     console.log('--- Printing All Menu Items ---');
     
