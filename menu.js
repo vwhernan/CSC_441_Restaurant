@@ -31,8 +31,18 @@ async function fetchMenu() {
 // display the menu items on the page
 function displayMenu(items) {
 
-    // get the menu categories
+    // get unique menu categories from the items array
     const categories = [...new Set(items.map(dish => dish.category))];
+    // define the drink categories separately
+    const drinkCategories = [
+        'HIGHBALLS & COCKTAILS',
+        'BEERS, SAKE & NO-ALC'
+    ];
+    // order the categories so that drink categories appear last
+    const orderedCategories = [
+        ...categories.filter(category => !drinkCategories.includes(category)),
+        ...drinkCategories.filter(category => categories.includes(category))
+    ];
     
     const menuContainer = document.querySelector('.food-menu');
 
@@ -43,48 +53,75 @@ function displayMenu(items) {
 
     menuContainer.innerHTML = ''; 
 
-    // create a section for each category
-    categories.forEach(category => {
+    // create a section for each ordered category and display its dishes
+    orderedCategories.forEach(category => {
+        const categorySection = document.createElement('section');
+
+        categorySection.className = 'menu-category';
+
         const categoryHeading = document.createElement('h2');
 
+        categoryHeading.className = 'menu-category-heading';
         categoryHeading.textContent = category;
-        menuContainer.appendChild(categoryHeading);
+        categorySection.appendChild(categoryHeading);
 
         const categoryDishes = items.filter(dish => dish.category === category);
 
-        // display each dish
+        // display each dish within the current category
         categoryDishes.forEach(dish => {
-            const dishElement = document.createElement('div');
-            dishElement.classList.add('menu-dish');
+            const dishElement = document.createElement('article');
 
-            dishElement.textContent = `${dish.dish_name} - $${Number(dish.price).toFixed(2)}`;
+            dishElement.className = 'menu-dish';
 
-            // add dietary tags where applicable
-            if (dish.dietary_tags) {
-                const dietaryElement = document.createElement('span');
+            const dishHeader = document.createElement('div');
 
-                dietaryElement.className = 'dietary-tags';
-                dietaryElement.textContent = ` (${dish.dietary_tags})`;
+            dishHeader.className = 'menu-dish-header';
 
-                dishElement.appendChild(dietaryElement);
-            }
-            
-            // add description where applicable
+            const dishName = document.createElement('h3');
+
+            dishName.className = 'menu-dish-name';
+            dishName.textContent = dish.dish_name;
+            dishHeader.appendChild(dishName);
+
+            const price = Number(dish.price);
+            const fractionDigits = Number.isInteger(price) ? 0 : 2;
+            const dishPrice = document.createElement('span');
+
+            dishPrice.className = 'menu-dish-price';
+            dishPrice.textContent = new Intl.NumberFormat('en-US', {
+                style: 'currency',
+                currency: 'USD',
+                minimumFractionDigits: fractionDigits,
+                maximumFractionDigits: 2
+            }).format(price);
+            dishHeader.appendChild(dishPrice);
+            dishElement.appendChild(dishHeader);
+
             if (dish.description) {
                 const descriptionElement = document.createElement('p');
 
+                descriptionElement.className = 'menu-dish-description';
                 descriptionElement.textContent = dish.description;
-
                 dishElement.appendChild(descriptionElement);
             }
 
-            menuContainer.appendChild(dishElement);
-        
-        })
+            if (dish.dietary_tags) {
+                const dietaryElement = document.createElement('span');
+
+                dietaryElement.className = 'menu-dish-tags';
+                dietaryElement.textContent = dish.dietary_tags;
+                dishElement.appendChild(dietaryElement);
+            }
+
+            categorySection.appendChild(dishElement);
+        });
+
+        menuContainer.appendChild(categorySection);
     });
 
 }
 
+// Display the menu items in the console for debugging purposes
 function displayMenuConsole(items) {
     console.log('--- Printing All Menu Items ---');
     

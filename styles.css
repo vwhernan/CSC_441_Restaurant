@@ -197,6 +197,75 @@ body{
     }
 }
 
+.food-menu {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 3rem;
+    row-gap: 4.5rem;
+    padding: 1rem 2.5rem 4rem;
+    color: #24231F;
+    font-family: 'Inter', system-ui, sans-serif;
+}
+
+.menu-category-heading {
+    margin: 0 0 1rem;
+    color: #D63724;
+    font-family: 'Barlow Condensed', 'Bebas Neue', 'Oswald', sans-serif;
+    font-size: 1.75rem;
+    font-weight: 400;
+    line-height: 1.1;
+    text-transform: uppercase;
+}
+
+.menu-dish {
+    border-top: 1px solid #D0CBBB;
+    padding: 0.7rem 0 0.65rem;
+}
+
+.menu-dish-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.menu-dish-name,
+.menu-dish-price {
+    margin: 0;
+    font-size: 0.875rem;
+    font-weight: 500;
+    line-height: 1.4;
+}
+
+.menu-dish-price {
+    flex-shrink: 0;
+}
+
+.menu-dish-description {
+    margin: 0.2rem 0 0;
+    color: #7A7670;
+    font-size: 0.7rem;
+    line-height: 1.5;
+}
+
+.menu-dish-tags {
+    display: block;
+    margin-top: 0.25rem;
+    color: #D63724;
+    font-size: 0.5rem;
+    font-weight: 700;
+    line-height: 1.3;
+    text-transform: uppercase;
+}
+
+@media (max-width: 700px) {
+    .food-menu {
+        grid-template-columns: 1fr;
+        row-gap: 2.5rem;
+        padding: 0.5rem 1rem 3rem;
+    }
+}
+
 /* -------------------------
    About Us Page Styling
 ---------------------------- */
