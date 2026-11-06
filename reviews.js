@@ -1,5 +1,13 @@
 // reviews.js communicates with Node.js backend through the API.
 
+// Helper function to turn numeric ratings (1-5) into star strings (e.g., ★★★★☆)
+function renderStars(rating) {
+    const maxStars = 5;
+    const filledStars = '★'.repeat(Math.min(Math.max(rating, 0), maxStars));
+    const emptyStars = '☆'.repeat(maxStars - filledStars.length);
+    return `${filledStars}${emptyStars}`;
+}
+
 async function loadReviews() {
     const container = document.getElementById("reviews-container");
 
@@ -14,19 +22,56 @@ async function loadReviews() {
 
         container.replaceChildren();
 
+        // If no reviews exist in the database, display a friendly message instead of failed to load reviews.
+        if (reviews.length === 0) {
+            const noReviewsMessage = document.createElement("p");
+            noReviewsMessage.className = "no-reviews-message";
+            noReviewsMessage.textContent = "No reviews yet. Be the first to leave one!";
+            container.appendChild(noReviewsMessage);
+            return;
+        }
+
         reviews.forEach(review => {
+            // Main card container element
             const reviewElement = document.createElement("div");
+            reviewElement.className = "review-card";
+
+            // Optional Pin/Tape header element for visual flare
+            const pin = document.createElement("div");
+            pin.className = "postit-pin";
+            pin.textContent = "📌";
+            pin.style.textAlign = "center";
+            pin.style.marginTop = "-10px";
+            pin.style.marginBottom = "5px";
+
+            // Header layout for name + star rating
+            const headerElement = document.createElement("div");
+            headerElement.className = "review-card-header";
 
             const name = document.createElement("h3");
+            name.className = "review-name";
             name.textContent = review.customer_name;
 
-            const rating = document.createElement("p");
-            rating.textContent = `Rating: ${review.rating}/5`;
+            const rating = document.createElement("div");
+            rating.className = "review-rating";
+            
+            const starsSpan = document.createElement("span");
+            starsSpan.className = "rating-stars";
+            starsSpan.textContent = renderStars(review.rating);
+            
+            const scoreSpan = document.createElement("span");
+            scoreSpan.className = "rating-score";
+            scoreSpan.textContent = ` (${review.rating}/5)`;
 
+            rating.append(starsSpan, scoreSpan);
+            headerElement.append(name, rating);
+
+            // Review text comment
             const comment = document.createElement("p");
+            comment.className = "review-comment";
             comment.textContent = review.comment;
 
-            reviewElement.append(name, rating, comment);
+            reviewElement.append(pin, headerElement, comment);
             container.appendChild(reviewElement);
         });
     } catch (error) {
@@ -49,7 +94,6 @@ async function submitReview(event) {
     const message = document.getElementById("review-message");
 
     try {
-        // Send the customer review to the Node.js backend
         const response = await fetch("/api/reviews", {
             method: "POST",
             headers: {
