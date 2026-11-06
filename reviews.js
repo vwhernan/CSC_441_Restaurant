@@ -87,11 +87,27 @@ document.getElementById("review-form").addEventListener("submit", submitReview);
 async function submitReview(event) {
     event.preventDefault();
 
-    const customer_name = document.getElementById("customer-name").value;
+    const customer_name = document.getElementById("customer-name").value.trim();
     const rating = Number(document.getElementById("review-rating").value);
-    const comment = document.getElementById("review-comment").value;
+    const comment = document.getElementById("review-comment").value.trim();
 
     const message = document.getElementById("review-message");
+
+    // Regular Expression patterns for validation
+    const nameRegex = /^[a-zA-Z\s]+$/;
+    const commentRegex = /^[a-zA-Z\s.,]+$/;
+
+    // Validate Customer Name (only text/letters and spaces allowed)
+    if (!nameRegex.test(customer_name)) {
+        message.textContent = "Validation error: Name can only contain letters and spaces.";
+        return;
+    }
+
+    // Validate Comment (only text/letters, spaces, commas, and periods allowed)
+    if (!commentRegex.test(comment)) {
+        message.textContent = "Validation error: Review comment can only contain letters, spaces, commas, and periods.";
+        return;
+    }
 
     try {
         const response = await fetch("/api/reviews", {
