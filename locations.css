@@ -1,5 +1,5 @@
 #locations-placeholder{
-    background-color: #E9E3D5 !important;
+    background-color: #F4F0E5 !important;
     padding-bottom: 2rem;
 }
 
@@ -42,4 +42,95 @@ li a {
     display: block;          
     color: #24231F;
     text-decoration: none;
+}
+
+.location-detail {
+    gap: 2rem;
+    padding: 1rem 0;
+}
+
+.location-detail iframe {
+    width: 46%;
+    max-width: 46%;
+    height: 230px;
+}
+
+.location-details {
+    flex: 1;
+    padding: 0.5rem 1.5rem;
+    font-family: 'Inter', system-ui, sans-serif;
+}
+
+.location-details h2 {
+    margin: 0 0 0.75rem;
+    color: #24231F;
+    font-family: 'Barlow Condensed', 'Bebas Neue', 'Oswald', sans-serif;
+    font-size: 2.25rem;
+    font-weight: 400;
+    line-height: 1;
+    text-transform: uppercase;
+}
+
+.location-description {
+    margin: 0 0 0.75rem;
+    color: #7A7670;
+    font-size: 0.85rem;
+    line-height: 1.5;
+}
+
+.location-address {
+    margin: 0;
+    font-size: 0.8rem;
+    font-style: normal;
+    font-weight: 600;
+}
+
+.location-phone {
+    margin: 0.25rem 0 0.75rem;
+    color: #7A7670;
+    font-size: 0.8rem;
+}
+
+.location-hours h3 {
+    margin: 0 0 0.25rem;
+    color: #D63724;
+    font-size: 0.65rem;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
+.location-hours dl {
+    display: grid;
+    gap: 0.1rem;
+    margin: 0;
+    font-size: 0.75rem;
+    line-height: 1.5;
+}
+
+.location-hours dl div {
+    display: grid;
+    grid-template-columns: 4rem 1fr;
+    gap: 0.5rem;
+}
+
+.location-hours dt,
+.location-hours dd {
+    margin: 0;
+    font-weight: 400;
+}
+
+@media (max-width: 700px) {
+    .location-detail {
+        flex-direction: column;
+    }
+
+    .location-detail iframe {
+        width: 100%;
+        max-width: 100%;
+        height: 220px;
+    }
+
+    .location-details {
+        padding: 1rem 0;
+    }
 }

@@ -179,6 +179,113 @@ body{
 }
 
 /* -------------------------
+   Homepage Menu Component
+---------------------------- */
+.featured-menu {
+    padding: 3.5rem 1.75rem;
+    background-color: #F4F0E5;
+    color: #24231F;
+}
+
+.featured-menu-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.featured-menu-header h2 {
+    margin: 0;
+    font-family: 'Barlow Condensed', 'Bebas Neue', 'Oswald', sans-serif;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 400;
+    line-height: 0.95;
+    text-transform: uppercase;
+}
+
+.featured-menu-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    min-width: 11rem;
+    border: 1px solid #24231F;
+    padding: 0.9rem 1rem;
+    color: #24231F;
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 0.75rem;
+    text-decoration: none;
+}
+
+.featured-menu-link:hover {
+    background-color: #24231F;
+    color: #F4F0E5;
+}
+
+.featured-menu-items {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.25rem;
+}
+
+.featured-menu-card img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 1.24 / 1;
+    object-fit: cover;
+}
+
+.featured-menu-card-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 0.65rem;
+}
+
+.featured-menu-name {
+    margin: 0;
+    font-family: 'Barlow Condensed', 'Bebas Neue', 'Oswald', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1.1;
+    text-transform: uppercase;
+}
+
+.featured-menu-price {
+    flex-shrink: 0;
+    color: #D63724;
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 0.9rem;
+}
+
+.featured-menu-ingredients {
+    margin: 0.65rem 0 0;
+    color: #7A7670;
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 0.7rem;
+    line-height: 1.5;
+}
+
+@media (max-width: 700px) {
+    .featured-menu {
+        padding: 2rem 1rem;
+    }
+
+    .featured-menu-header {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .featured-menu-items {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+}
+
+/* -------------------------
    Menu Page Styling
 ---------------------------- */
 #menu-page-header {
@@ -269,6 +376,66 @@ body{
 /* -------------------------
    About Us Page Styling
 ---------------------------- */
+
+.about-blurb {
+    display: grid;
+    grid-template-columns: 1fr 1.15fr;
+    align-items: start;
+    gap: 3rem;
+    padding: 1rem 1.75rem;
+    background-color: #F4F0E5;
+    color: #24231F;
+}
+
+.about-blurb-title h1 {
+    margin: 0;
+    font-family: 'Barlow Condensed', 'Bebas Neue', 'Oswald', sans-serif;
+    font-size: clamp(2.5rem, 4vw, 3.25rem);
+    font-weight: 400;
+    line-height: 1.05;
+    text-transform: uppercase;
+}
+
+.about-blurb-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.about-blurb-lead {
+    margin: 0;
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.about-blurb-description {
+    margin: 0;
+    color: #7A7670;
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 0.75rem;
+    line-height: 1.6;
+}
+
+.about-blurb-link {
+    color: #D63724;
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 0.625rem;
+    text-decoration: none;
+}
+
+.about-blurb-link:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 700px) {
+    .about-blurb {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        padding: 1.5rem;
+    }
+}
 
 .story-section {
     display: flex;
@@ -598,4 +765,37 @@ body{
 .no-reviews-message {
     font-style: italic;
     color: #666;
+}
+
+/* -------------------------
+    Reviews Section Styling
+------------------------- */
+.review-card {
+    font-family: 'Inter', system-ui, sans-serif;
+    background-color: #fff8b9;
+}
+
+.review-card h3 {
+    font-family: 'Barlow Condensed', 'Bebas Neue', sans-serif;
+    font-size: 23px;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+}
+
+.review-card p {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+#leave-review-button {
+    font-family: 'Inter', system-ui, sans-serif;
+    background-color: #D34B37;
+    border: none;
+    color: #F4F0E5;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    text-transform: uppercase;
 }
