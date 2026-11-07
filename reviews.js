@@ -80,9 +80,16 @@ async function loadReviews() {
     }
 }
 
-document.addEventListener("DOMContentLoaded", loadReviews);
-
-document.getElementById("review-form").addEventListener("submit", submitReview);
+document.addEventListener("DOMContentLoaded", () => {
+    // Each page only has some of these elements (list on home, form on Contact Us)
+    if (document.getElementById("reviews-container")) {
+        loadReviews();
+    }
+    const reviewForm = document.getElementById("review-submit-form");
+    if (reviewForm) {
+        reviewForm.addEventListener("submit", submitReview);
+    }
+});
 
 async function submitReview(event) {
     event.preventDefault();
@@ -128,9 +135,11 @@ async function submitReview(event) {
 
         message.textContent = "Review submitted successfully!";
 
-        document.getElementById("review-form").reset();
+        document.getElementById("review-submit-form").reset();
 
-        await loadReviews();
+        if (document.getElementById("reviews-container")) {
+            await loadReviews();
+        }
 
     } catch (error) {
         console.error("Error submitting review:", error);
