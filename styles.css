@@ -1,3 +1,7 @@
+/* -------------------------
+   Overall Site Styling
+---------------------------- */
+
 body{
     background-color: #F4F0E5 !important;
     overflow-x: hidden;
@@ -113,8 +117,302 @@ body{
 }
 
 /* -------------------------
-   Locations Page Styling
+   Homepage
 ---------------------------- */
+
+/* -------------------------
+   Homepage Menu Component
+---------------------------- */
+.featured-menu {
+    padding: 3.5rem 1.75rem;
+    background-color: #F4F0E5;
+    color: #24231F;
+}
+
+.featured-menu-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.featured-menu-header h2 {
+    margin: 0;
+    font-family: 'Barlow Condensed', 'Bebas Neue', 'Oswald', sans-serif;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 400;
+    line-height: 0.95;
+    text-transform: uppercase;
+}
+
+.featured-menu-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    min-width: 11rem;
+    border: 1px solid #24231F;
+    padding: 0.9rem 1rem;
+    color: #24231F;
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 0.75rem;
+    text-decoration: none;
+}
+
+.featured-menu-link:hover {
+    background-color: #24231F;
+    color: #F4F0E5;
+}
+
+.featured-menu-items {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.25rem;
+}
+
+.featured-menu-card img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 1.24 / 1;
+    object-fit: cover;
+}
+
+.featured-menu-card-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 0.65rem;
+}
+
+.featured-menu-name {
+    margin: 0;
+    font-family: 'Barlow Condensed', 'Bebas Neue', 'Oswald', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1.1;
+    text-transform: uppercase;
+}
+
+.featured-menu-price {
+    flex-shrink: 0;
+    color: #D63724;
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 0.9rem;
+}
+
+.featured-menu-ingredients {
+    margin: 0.65rem 0 0;
+    color: #7A7670;
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 0.7rem;
+    line-height: 1.5;
+}
+
+@media (max-width: 700px) {
+    .featured-menu {
+        padding: 2rem 1rem;
+    }
+
+    .featured-menu-header {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .featured-menu-items {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+}
+
+/* -------------------------
+   Homepage About Component
+---------------------------- */
+
+.about-blurb {
+    display: grid;
+    grid-template-columns: 1fr 1.15fr;
+    align-items: start;
+    gap: 3rem;
+    padding: 1rem 1.75rem;
+    background-color: #F4F0E5;
+    color: #24231F;
+}
+
+.about-blurb-title h1 {
+    margin: 0;
+    font-family: 'Barlow Condensed', 'Bebas Neue', 'Oswald', sans-serif;
+    font-size: clamp(2.5rem, 4vw, 3.25rem);
+    font-weight: 400;
+    line-height: 1.05;
+    text-transform: uppercase;
+}
+
+.about-blurb-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.about-blurb-lead {
+    margin: 0;
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.about-blurb-description {
+    margin: 0;
+    color: #7A7670;
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 0.75rem;
+    line-height: 1.6;
+}
+
+.about-blurb-link {
+    color: #D63724;
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 0.625rem;
+    text-decoration: none;
+}
+
+.about-blurb-link:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 700px) {
+    .about-blurb {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        padding: 1.5rem;
+    }
+}
+
+/* --------------------
+    Homepage Customer Reviews
+----------------------- */
+
+/* Customer Reviews Section Header */
+#customer-reviews h2 {
+    font-family: 'Barlow Condensed', 'Bebas Neue', 'Oswald', sans-serif;
+    font-size: 3rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+}
+
+/* Reviews list */
+#reviews-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    padding: 20px 10px;
+}
+
+/* Base Post-it Note style */
+/* Review cards */
+.review-card {
+    background-color: #fff8b9;
+    color: #333;
+    width: 240px;
+    min-height: 220px;
+    padding: 20px;
+    box-sizing: border-box;
+    position: relative;
+    
+    /* Box shadow to create floating 3D paper effect */
+    box-shadow: 5px 5px 12px rgba(0, 0, 0, 0.15), 
+                0px 0px 1px rgba(0, 0, 0, 0.1);
+    
+    /* Slight rotation effect */
+    transform: rotate(-2deg);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+    font-family: 'Inter', system-ui, sans-serif;
+}
+
+/* Rotate alternating cards in opposite directions for realistic look */
+.review-card:nth-child(even) {
+    transform: rotate(3deg);
+    background: #fffb96;
+}
+
+.review-card:nth-child(3n) {
+    transform: rotate(-3deg);
+    background: #ffea78;
+}
+
+/* Hover effect - lifts up the sticky note */
+.review-card:hover {
+    transform: scale(1.05) rotate(0deg);
+    box-shadow: 8px 12px 20px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+}
+
+/* Card Header (Name & Rating) */
+.review-card-header {
+    border-bottom: 2px stroke rgba(0, 0, 0, 0.1);
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+}
+
+.review-name {
+    margin: 0 0 0.5rem;
+    color: #111;
+    font-family: 'Barlow Condensed', 'Bebas Neue', sans-serif;
+    font-size: 23px;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.review-rating {
+    font-size: 0.9rem;
+}
+
+.rating-stars {
+    color: #e67e22; 
+    font-size: 1rem;
+    letter-spacing: 1px;
+}
+
+.rating-score {
+    color: #555;
+    font-size: 0.85rem;
+}
+
+/* Comment Body */
+.review-comment {
+    margin: 0 0 1.5rem;
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    word-wrap: break-word;
+}
+
+/* Empty message styling */
+.no-reviews-message {
+    font-style: italic;
+    color: #666;
+}
+
+/* Leave a review link */
+#leave-review-button {
+    font-family: 'Inter', system-ui, sans-serif;
+    background-color: #D34B37;
+    border: none;
+    color: #F4F0E5;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+/* -------------------------
+   Locations Page (LocationsDetails.html)
+---------------------------- */
+/* Location maps and detail rows */
 .locations-map-details {
     display: flex;
     flex-direction: column;
@@ -132,6 +430,7 @@ body{
     align-items: center;
 }
 
+/* Location information */
 #locations-information {
     background-color: #E9E3D5;
     padding: 3rem 4rem;
@@ -174,13 +473,15 @@ body{
     }
 }
 
+/* Location contact details */
 .location-details {
     padding: 2rem;
 }
 
 /* -------------------------
-   Menu Page Styling
+   Menu Page (FullMenu.Html)
 ---------------------------- */
+/* Full menu header */
 #menu-page-header {
     background-color: #E9E3D5;
     height: auto;
@@ -197,6 +498,7 @@ body{
     }
 }
 
+/* Menu categories and dishes */
 .food-menu {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -207,6 +509,7 @@ body{
     font-family: 'Inter', system-ui, sans-serif;
 }
 
+/* Menu category headings */
 .menu-category-heading {
     margin: 0 0 1rem;
     color: #D63724;
@@ -217,6 +520,7 @@ body{
     text-transform: uppercase;
 }
 
+/* Individual menu items */
 .menu-dish {
     border-top: 1px solid #D0CBBB;
     padding: 0.7rem 0 0.65rem;
@@ -267,9 +571,10 @@ body{
 }
 
 /* -------------------------
-   About Us Page Styling
+   Our Story Page (OurStory.html)
 ---------------------------- */
 
+/* Founders story */
 .story-section {
     display: flex;
     justify-content: space-between;
@@ -354,6 +659,7 @@ body{
     text-transform: uppercase;
 }
 
+/* Mission statement */
 #mission-statement {
     padding: 2rem;
     background-color: #E9E3D5;
@@ -404,11 +710,12 @@ body{
     flex-direction: row;
     justify-content: space-between;
     gap: 2rem;
-}   
+}
 
 /* --------------------
-    Contact Us Styling 
+    Contact Us Page 
 ----------------------- */
+/* Review submission form */
 #review-form {
     font-family: 'Inter', system-ui, sans-serif;
     padding: 2rem;
@@ -453,6 +760,7 @@ body{
     }
 }
 
+/* Send message form */
 #send-message {
     font-family: 'Inter', system-ui, sans-serif;
     padding: 2rem;
@@ -505,97 +813,4 @@ body{
         cursor: pointer;
         text-transform: uppercase;
     }
-}
-
-/* --------------------
-    Reviews Styling
------------------------ */
-
-#reviews-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 24px;
-    padding: 20px 10px;
-}
-
-/* Base Post-it Note style */
-.review-card {
-    background: #fffa78; 
-    color: #333;
-    width: 240px;
-    min-height: 220px;
-    padding: 20px;
-    box-sizing: border-box;
-    position: relative;
-    
-    /* Box shadow to create floating 3D paper effect */
-    box-shadow: 5px 5px 12px rgba(0, 0, 0, 0.15), 
-                0px 0px 1px rgba(0, 0, 0, 0.1);
-    
-    /* Slight rotation effect */
-    transform: rotate(-2deg);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    
-    font-family: 'Comic Sans MS', 'Caveat', 'Marker Felt', sans-serif;
-}
-
-/* Rotate alternating cards in opposite directions for realistic look */
-.review-card:nth-child(even) {
-    transform: rotate(3deg);
-    background: #fffb96;
-}
-
-.review-card:nth-child(3n) {
-    transform: rotate(-3deg);
-    background: #ffea78;
-}
-
-/* Hover effect - lifts up the sticky note */
-.review-card:hover {
-    transform: scale(1.05) rotate(0deg);
-    box-shadow: 8px 12px 20px rgba(0, 0, 0, 0.2);
-    z-index: 10;
-}
-
-/* Card Header (Name & Rating) */
-.review-card-header {
-    border-bottom: 2px stroke rgba(0, 0, 0, 0.1);
-    margin-bottom: 12px;
-    padding-bottom: 8px;
-}
-
-.review-name {
-    margin: 0 0 4px 0;
-    font-size: 1.2rem;
-    font-weight: bold;
-    color: #111;
-}
-
-.review-rating {
-    font-size: 0.9rem;
-}
-
-.rating-stars {
-    color: #e67e22; 
-    font-size: 1rem;
-    letter-spacing: 1px;
-}
-
-.rating-score {
-    color: #555;
-    font-size: 0.85rem;
-}
-
-/* Comment Body */
-.review-comment {
-    margin: 0;
-    font-size: 1rem;
-    line-height: 1.4;
-    word-wrap: break-word;
-}
-
-/* Empty message styling */
-.no-reviews-message {
-    font-style: italic;
-    color: #666;
 }

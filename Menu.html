@@ -1,7 +1,98 @@
+<section class="featured-menu">
+    <div class="featured-menu-header">
+        <h2>The usual favorites.</h2>
+        <a class="featured-menu-link" href="FullMenu.Html">See the full menu <span aria-hidden="true">↗</span></a>
+    </div>
+    <div id="featured-menu-items" class="featured-menu-items" aria-live="polite">
+        <p>Loading menu items...</p>
+    </div>
+    <script data-menu-script>
+        (async function loadFeaturedMenu() {
+            const container = document.getElementById('featured-menu-items');
+            const featuredDishes = [
+                { databaseName: 'Chicken Thigh Yakitori', displayName: 'Yakitori', image: 'images/yakitori.jpg' },
+                { databaseName: 'Takoyaki', displayName: 'Takoyaki', image: 'images/takoyaki.png' },
+                { databaseName: 'Katsudon', displayName: 'Katsudon', image: 'images/katsudon.jpg' }
+            ];
 
-<div class="menu">
-    <h1>Menu</h1>
-    <p>Coming Soon!</p>
-</div>
+            function formatPrice(price) {
+                const numericPrice = Number(price);
 
+                if (!Number.isFinite(numericPrice)) {
+                    throw new Error(`Invalid menu price: ${price}`);
+                }
 
+                return new Intl.NumberFormat('en-US', {
+                    style: 'currency',
+                    currency: 'USD',
+                    minimumFractionDigits: Number.isInteger(numericPrice) ? 0 : 2,
+                    maximumFractionDigits: 2
+                }).format(numericPrice);
+            }
+
+            try {
+                const response = await fetch('/api/menu');
+
+                if (!response.ok) {
+                    throw new Error(`Failed to retrieve menu: ${response.status}`);
+                }
+
+                const menuItems = await response.json();
+
+                if (!Array.isArray(menuItems)) {
+                    throw new Error('The menu API returned an invalid response');
+                }
+
+                const cards = featuredDishes.map(featuredDish => {
+                    const dish = menuItems.find(item =>
+                        item.dish_name.toLowerCase() === featuredDish.databaseName.toLowerCase()
+                    );
+
+                    if (!dish) {
+                        throw new Error(`Menu item "${featuredDish.databaseName}" was not found`);
+                    }
+
+                    const card = document.createElement('article');
+
+                    card.className = 'featured-menu-card';
+
+                    const image = document.createElement('img');
+
+                    image.src = featuredDish.image;
+                    image.alt = featuredDish.displayName;
+                    image.loading = 'lazy';
+
+                    const header = document.createElement('div');
+
+                    header.className = 'featured-menu-card-header';
+
+                    const name = document.createElement('h3');
+
+                    name.className = 'featured-menu-name';
+                    name.textContent = featuredDish.displayName;
+
+                    const price = document.createElement('span');
+
+                    price.className = 'featured-menu-price';
+                    price.textContent = formatPrice(dish.price);
+                    header.append(name, price);
+
+                    const ingredients = document.createElement('p');
+
+                    ingredients.className = 'featured-menu-ingredients';
+                    ingredients.textContent = Array.isArray(dish.ingredients) && dish.ingredients.length
+                        ? dish.ingredients.join(', ')
+                        : 'Ingredients unavailable.';
+
+                    card.append(image, header, ingredients);
+                    return card;
+                });
+
+                container.replaceChildren(...cards);
+            } catch (error) {
+                console.error('Error loading featured menu:', error);
+                container.textContent = 'Unable to load menu items. Please try again later.';
+            }
+        })();
+    </script>
+</section>

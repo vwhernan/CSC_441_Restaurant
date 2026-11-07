@@ -21,6 +21,16 @@ components.forEach(component => {
             const element = document.getElementById(component.id);
             if (element) {
                 element.innerHTML = data;
+                if (component.id === 'menu-placeholder') {
+                    const menuScript = element.querySelector('script[data-menu-script]');
+
+                    if (menuScript) {
+                        const activeScript = document.createElement('script');
+
+                        activeScript.textContent = menuScript.textContent;
+                        menuScript.replaceWith(activeScript);
+                    }
+                }
             }
             if (component.id === 'nav-placeholder') {
                 const page = document.body.dataset.page;
